@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class RoomsController < ApplicationController
   def index
     @current_user = current_user
@@ -16,10 +15,11 @@ class RoomsController < ApplicationController
   def show
     @current_user = current_user
     @single_room  = Room.find(params[:id])
+    @message  = Message.new
+    @messages = @single_room.messages rescue @single_room
     @rooms = Room.public_rooms
     @users = User.all_except(@current_user)
     @room  = Room.new
-
     render 'index'
   end
 end
