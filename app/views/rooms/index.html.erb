@@ -1,30 +1,41 @@
 <div class="row">
   <div class="col-md-2">
-    <h5> Hi <%= @current_user.username %> </h5>
-    <h4> Users </h4>
-    <div>
-      <%= turbo_stream_from "users" %>
-      <div id="users">
-        <%= render @users %>
-      </div>
-    </div>
-    <h4> Rooms </h4>
+    <h5 class="text-primary" id="greeting"></h5>
+    <h4 class="text-info"> Your Rooms </h4>
     <%= render partial: "new_room_form" %>
     <div>
       <%= turbo_stream_from "rooms" %>
       <div id="rooms">
         <%= render @rooms %>
-        <%= link_to 'Sign Out', signout_path,  :method => :delete %>
+        <%= link_to 'Sign Out', signout_path,  :method => :delete, class: "text-danger" %>
       </div>
     </div>
   </div>
-	<div class="col-md-10 bg-dark text-light">
-  <% if @single_room %>
-  <h4 class="text-center"> <%= @user&.username || @single_room&.name %> </h4>
-    <%= turbo_stream_from @single_room %>
-    <div id="messages"></div>
-     <%= render @messages %>
-    <%= render partial: 'layouts/new_message_form' %>
-  <% end %>
-	</div>
+  <div class="col-md-10 bg-dark text-light">
+    <% if @single_room %>
+      <h4 class="text-center text-primary"> <%= @user&.username || @single_room&.name %> </h4>
+      <%= turbo_stream_from @single_room %>
+      <div id="messages"></div>
+      <%= render @messages %>
+      <%= render partial: 'layouts/new_message_form' %>
+    <% end %>
+  </div>
 </div>
+
+<script>
+  // Get the current time
+  var currentTime = new Date();
+  var currentHour = currentTime.getHours();
+
+  // Update the greeting based on the current time
+  var greetingElement = document.getElementById("greeting");
+  var greetingText = "Good ";
+  if (currentHour < 12) {
+    greetingText += "Morning";
+  } else if (currentHour < 18) {
+    greetingText += "Afternoon";
+  } else {
+    greetingText += "Evening";
+  }
+  greetingElement.innerText = greetingText + ", <%= @current_user.username %>";
+</script>
