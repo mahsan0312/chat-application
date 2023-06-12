@@ -36,7 +36,7 @@ gem 'sass-rails'
 
 gem 'uglifier', '~> 4.2'
 
-gem 'terser', '~> 1.2', '>= 1.2.3'
+gem 'terser'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
