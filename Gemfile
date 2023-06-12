@@ -59,6 +59,8 @@ end
 
 group :development do
   gem 'web-console'
+
+  # Deployment
   gem 'capistrano', '~> 3.17'
   gem 'capistrano-rails', '~> 1.6', '>= 1.6.2'
   gem 'capistrano-passenger', '~> 0.2.1'
