@@ -34,7 +34,7 @@ gem "redis", "~> 4.0"
 
 gem 'sass-rails'
 
-gem 'uglifier', '~> 4.2'
+gem 'uglifier', '~> 4.2', '>= 4.2.0'
 
 gem 'terser'
 
