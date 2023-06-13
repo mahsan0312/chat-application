@@ -3,7 +3,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.cache_classes = true
   config.eager_load = true
-  config.assets.css_compressor = :yui
+  # config.assets.css_compressor = :yui
   # config.assets.js_compressor = Uglifier.new(harmony: true)
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
